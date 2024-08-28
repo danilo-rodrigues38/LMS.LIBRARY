@@ -11,15 +11,15 @@ namespace LMS.LIBRARY.API.Controllers
     {
         private readonly IBookService _bookService;
 
-        public BooksController(IBookService bookService)
+        public BooksController ( IBookService bookService )
         {
             _bookService = bookService;
         }
 
         [HttpGet]
-        public IActionResult GetBook ( )
+        public IActionResult GetAllBook ( )
         {
-            return (IActionResult) _bookService.GetAllBooks ( );
+            return Ok ( );
         }
     }
 }
