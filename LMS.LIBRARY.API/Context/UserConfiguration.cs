@@ -7,13 +7,6 @@ namespace LMS.LIBRARY.API.Context
     {
         public static void Configure ( ModelBuilder modelBuilder )
         {
-            foreach (var property in modelBuilder.Model.GetEntityTypes ( )
-                .SelectMany ( t => t.GetProperties ( ) )
-                .Where ( p => p.ClrType == typeof ( string ) ))
-            {
-                property.SetColumnType ( "varchar (100)" );
-            }
-
             modelBuilder.Entity<User>()
                 .HasKey ( u => u.Id );
 

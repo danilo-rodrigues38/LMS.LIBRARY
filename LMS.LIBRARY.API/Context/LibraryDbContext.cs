@@ -14,6 +14,13 @@ namespace LMS.LIBRARY.API.Context
 
         protected override void OnModelCreating ( ModelBuilder modelBuilder )
         {
+            foreach (var property in modelBuilder.Model.GetEntityTypes ( )
+                .SelectMany ( t => t.GetProperties ( ) )
+                .Where ( p => p.ClrType == typeof ( string ) ))
+            {
+                property.SetColumnType ( "varchar (100)" );
+            }
+
             UserConfiguration.Configure ( modelBuilder );
             BookConfiguration.Configure ( modelBuilder );
 
